@@ -94,6 +94,7 @@ public class MSButton
             setLabel(str(countBombs(r,c)));
         else
         {
+            
             if(isValid(r-1,c-1))
                 if(!buttons[r-1][c-1].isClicked())
                     buttons[r-1][c-1].mousePressed();
@@ -118,6 +119,11 @@ public class MSButton
             if(isValid(r+1,c+1))
                 if(!buttons[r+1][c+1].isClicked())
                     buttons[r+1][c+1].mousePressed();
+            
+            // for(int j=-1;j<=1;j++)
+            //     for(int i=-1;i<=1;i++)
+            //         if(isValid(r+i,c+j)&&buttons[r+i][c+j].isClicked()==false)
+            //             buttons[r+i][c+j].mousePressed();
         }
 
     }
@@ -143,7 +149,7 @@ public class MSButton
     }
     public boolean isValid(int r, int c)
     {
-        if(r<NUM_ROWS&&c<NUM_COLS)
+        if(r<NUM_ROWS&&c<NUM_COLS&&c>=0&&r>=0)
             return true;
         else
             return false;
