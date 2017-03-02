@@ -18,8 +18,8 @@ void setup()
     for(int row=0;row<NUM_ROWS;row++)
         for(int col=0;col<NUM_COLS;col++)
             buttons[row][col]=new MSButton(row,col);
-    
-    setBombs();
+    for(int i=0;i<50;i++)    
+        setBombs();
 }
 public void setBombs()
 {
@@ -37,7 +37,11 @@ public void draw ()
 }
 public boolean isWon()
 {
-    //your code here
+    for(int r=0;r<NUM_ROWS;r++)
+        for(int c=0;c<NUM_COLS;c++)
+        {
+            if()
+        }
     return false;
 }
 public void displayLosingMessage()
@@ -119,11 +123,6 @@ public class MSButton
             if(isValid(r+1,c+1))
                 if(!buttons[r+1][c+1].isClicked())
                     buttons[r+1][c+1].mousePressed();
-            
-            // for(int j=-1;j<=1;j++)
-            //     for(int i=-1;i<=1;i++)
-            //         if(isValid(r+i,c+j)&&buttons[r+i][c+j].isClicked()==false)
-            //             buttons[r+i][c+j].mousePressed();
         }
 
     }
