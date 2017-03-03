@@ -18,7 +18,7 @@ void setup()
     for(int row=0;row<NUM_ROWS;row++)
         for(int col=0;col<NUM_COLS;col++)
             buttons[row][col]=new MSButton(row,col);
-    for(int i=0;i<50;i++)    
+    for(int i=0;i<20;i++)    
         setBombs();
 }
 public void setBombs()
@@ -34,15 +34,19 @@ public void draw ()
     background( 0 );
     if(isWon())
         displayWinningMessage();
+    System.out.println(isWon());
 }
 public boolean isWon()
 {
     for(int r=0;r<NUM_ROWS;r++)
         for(int c=0;c<NUM_COLS;c++)
         {
-            if()
+            if(bombs.contains(buttons[r][c])&&buttons[r][c].isMarked()==false)
+                return false;
+            if(bombs.contains(buttons[r][c])==false&&buttons[r][c].isMarked())
+                return false;
         }
-    return false;
+    return true;
 }
 public void displayLosingMessage()
 {
@@ -93,7 +97,25 @@ public class MSButton
         }
         
         else if(bombs.contains(this))
+        {
             displayLosingMessage();
+            /*for(int r=0;r<NUM_ROWS;r++)
+            {
+                for(int c=0;c<NUM_COLS;c++)
+                {
+                    if(bombs.contains(buttons[r][c]))
+                    {
+                        buttons[r][c].mousePressed();
+                    }
+                }
+            }
+            */
+            for(int i=0;i<bombs.size();i++)
+                if(bombs.get(i).isClicked()==false)
+                bombs.get(i).mousePressed();
+
+            
+        }
         else if(countBombs(r,c)>0)
             setLabel(str(countBombs(r,c)));
         else
