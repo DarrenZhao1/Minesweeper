@@ -50,12 +50,33 @@ public boolean isWon()
 }
 public void displayLosingMessage()
 {
-    //your code here
+    for(int i=0;i<bombs.size();i++)
+        if(bombs.get(i).isClicked()==false)
+            bombs.get(i).mousePressed();
+        buttons[11][6].setLabel("Y");
+        buttons[11][7].setLabel("O");
+        buttons[11][8].setLabel("U");
+        buttons[11][9].setLabel(" ");
+        buttons[11][10].setLabel("L");
+        buttons[11][11].setLabel("O");
+        buttons[11][12].setLabel("S");
+        buttons[11][13].setLabel("E");
+        buttons[11][14].setLabel("!");
 }
 public void displayWinningMessage()
 {
-    //your code here
-}
+    if(isWon()==true)
+    {
+        buttons[11][6].setLabel("Y");
+        buttons[11][7].setLabel("O");
+        buttons[11][8].setLabel("U");
+        buttons[11][9].setLabel(" ");
+        buttons[11][10].setLabel("W");
+        buttons[11][11].setLabel("I");
+        buttons[11][12].setLabel("N");
+        buttons[11][13].setLabel("!");
+    }
+}   
 
 public class MSButton
 {
