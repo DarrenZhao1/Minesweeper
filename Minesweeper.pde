@@ -50,6 +50,10 @@ public boolean isWon()
 }
 public void displayLosingMessage()
 {
+  for (int i=0; i< mines.size(); i++)
+    if (mines.get(i).isClicked()==false)
+      mines.get(i).mousePressed();
+      
   fill(255, 0, 0);
   buttons[10][6].setLabel("Y");
   buttons[10][7].setLabel("O");
@@ -157,6 +161,7 @@ public class MSButton
         flagged =  false;
       }
     } else if (mines.contains(this)) {
+      clicked = true;
       displayLosingMessage();
     } else if (countMines(myRow, myCol) > 0) {
       setLabel("" + countMines(myRow, myCol));
